@@ -1,0 +1,872 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: #ffffff;
+    min-height: 100vh; 
+}
+
+/* Colori speciali e Utility */
+.oseparata {
+    color: #ff003c;
+}
+
+/* =========================================
+   2. NAVBAR E MENU
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 23px;
+}
+
+.logo img {
+    height: 55px;
+    width: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.logo img:hover {
+    opacity: 0.8;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #ff003c;
+}
+
+/* Hamburger (Nascosto su Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    transition: 0.3s;
+}
+
+/* =========================================
+   3. SEZIONE HERO
+   ========================================= */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding-left: 60px;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    line-height: 1;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content p {
+    margin-top: 15px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+/* Video Background */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+    background: #000;
+}
+
+.back-video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.video-bg-blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px) brightness(0.6);
+    opacity: 0.8;
+}
+
+.video-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    z-index: -1;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================================
+   4. MANIFESTO
+   ========================================= */
+.manifesto {
+    padding: 140px 60px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.manifesto-text-wrapper {
+    max-width: 850px;
+    flex-shrink: 0;
+}
+
+.manifesto-text {
+    font-size: 22px;
+    line-height: 1.7;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.manifesto-text span {
+    color: #ff003c;
+    font-weight: bold;
+}
+
+.side-decor {
+    width: 250px;
+    height: auto;
+    flex-shrink: 0;
+    opacity: 0.6;
+    filter: grayscale(0.5) contrast(1.1);
+    z-index: 1;
+    mix-blend-mode: screen;
+    transition: all 0.5s ease;
+}
+
+.manifesto:hover .side-decor {
+    opacity: 0.8;
+    filter: grayscale(0) contrast(1.3);
+}
+
+.side-decor video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================
+   5. EVENTI
+   ========================================= */
+.event-section {
+    background-color: #0a0a0a;
+    padding: 80px 60px;
+}
+
+.event-section h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #ffffff;
+}
+
+.events-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 60px;
+}
+
+.event-card {
+    position: relative;
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #ff003c;
+    transition: 0.3s;
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.event-card:hover {
+    transform: scale(1.06);
+    border-color: #ff003c;
+}
+
+.event-card img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ff003c;
+}
+
+.event-label {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: #ff003c;
+    color: #000;
+    padding: 6px 14px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.event-details h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.event-details p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    opacity: 0.85;
+}
+
+.event-section a {
+    color: #ff003c;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.event-section a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   6. CAROSELLO
+   ========================================= */
+.carousel-section {
+    padding: 40px 60px 100px 60px;
+    background-color: #0a0a0a;
+}
+
+.carousel-section h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.carousel-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(255, 0, 60, 0.3);
+    border: 2px solid #ff003c;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+    height: 600px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #0a0a0a;
+    display: flex;
+    align-items: flex-end;
+}
+
+.slide-content {
+    width: 100%;
+    padding: 40px 40px 50px 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+}
+
+.slide-content h3 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #ff003c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+}
+
+.slide-content p {
+    font-size: 1.1em;
+    color: #ddd;
+    max-width: 600px;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.nav-btn {
+    pointer-events: all;
+    background: rgba(255, 0, 60, 0.8);
+    border: 2px solid #ff003c;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 0, 60, 0.7);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 60, 0.8);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.dot.active, .dot:hover {
+    background: #ff003c;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.8);
+    border-color: #ff003c;
+}
+
+/* =========================================
+   7. MERCH
+   ========================================= */
+.merch-section {
+    padding: 80px 60px;
+    text-align: center;
+    background-color: #0a0a0a;
+}
+
+.merch-section h2 {
+    margin-bottom: 50px;
+    font-size: 3rem;
+}
+
+.merch-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.merch-item {
+    flex: 1 1 300px;
+    max-width: 400px;
+    height: 550px;
+    overflow: hidden;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.merch-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.merch-item:hover {
+    border-color: #ff003c;
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.2);
+}
+
+.merch-item:hover img {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   8. SOUND E CONTATTI
+   ========================================= */
+.sound-section {
+    padding: 80px 60px;
+    background-color: #050505;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.sound-section h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.soundcloud-wrapper {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    border: 2px solid #333;
+    box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
+    transition: all 0.3s ease;
+}
+
+.soundcloud-wrapper:hover {
+    border-color: #ff003c;
+    box-shadow: 0 0 50px rgba(255, 0, 60, 0.4);
+    transform: scale(1.01);
+}
+
+.soundcloud-wrapper iframe {
+    display: block;
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.5s ease;
+}
+
+.soundcloud-wrapper:hover iframe {
+    filter: grayscale(0%) contrast(1);
+}
+
+.contact-section {
+    background-color: #111;
+    padding: 100px 60px;
+}
+
+.contact-section h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.contact-info p {
+    font-size: 20px;
+    margin-bottom: 15px;
+    opacity: 0.85;
+}
+
+/* =========================================
+   9. BOTTONI ED EFFETTI
+   ========================================= */
+.instagram-button, .cta-button {
+    display: inline-block;
+    padding: 12px 25px; /* Misura unificata */
+    border: 2px solid #ff003c;
+    color: #ff003c;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.instagram-button {
+    margin-top: 15px;
+}
+
+.cta-button {
+    font-size: 1.1rem;
+    padding: 15px 40px; /* Più grande per il merch */
+}
+
+.instagram-button:hover, .cta-button:hover {
+    background-color: #ff003c;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 0, 60, 0.6);
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   10. MEDIA QUERIES (MOBILE)
+   ========================================= */
+
+/* Tablet / Schermi medi */
+@media (max-width: 1024px) {
+    .side-decor {
+        width: 150px;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+    /* Impostazioni generali padding */
+    .event-section, .sound-section, .carousel-section, .merch-section, .contact-section {
+        padding: 60px 20px;
+    }
+
+    /* Navbar & Hamburger */
+    .hamburger {
+        display: flex;
+    }
+    
+    .navbar {
+        padding: 15px 20px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+    }
+
+    .navbar nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0; 
+        gap: 25px; 
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+    }
+
+    .navbar nav.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .navbar nav a {
+        margin: 0; 
+        font-size: 20px; 
+        letter-spacing: 2px;
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 0;
+        justify-content: center;
+    }
+    
+    .hero-content {
+        padding-left: 0;
+        padding: 0 20px;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px;
+        line-height: 1.1;
+        letter-spacing: 2px;
+    }
+    
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.65);
+    }
+    
+    .video-bg-blur {
+        display: none;
+    }
+    
+    .video-main {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Manifesto */
+    .manifesto {
+        flex-direction: column;
+        padding: 50px 20px;
+        gap: 15px;
+    }
+    
+    .manifesto-text {
+        font-size: 16px;
+    }
+    
+    .left-decor {
+        display: none;
+    }
+    
+    .right-decor {
+        width: 300px;
+        max-width: 90vw;
+        margin: 20px auto 0 auto; 
+        display: flex;
+        justify-content: center;
+    }
+
+    .right-decor video, 
+    .right-decor img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Griglie Eventi e Merch */
+    .events-wrapper, .merch-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Carosello */
+    .carousel-wrapper {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .carousel-slide {
+        scroll-snap-align: center;
+    }
+    
+    .carousel-nav {
+        display: none;
+    }
+
+    /* Soundcloud */
+    .soundcloud-wrapper iframe {
+        height: 350px;
+    }
+}
+/* =========================================
+   11. LOGHI PARTNER & SPONSOR
+   ========================================= */
+.partners-section {
+    background-color: #050505;
+    padding: 60px 60px; /* Spazio sopra e sotto la fascia dei loghi */
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px; /* Distanza tra i loghi */
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    width: 100%;
+}
+
+.partners-grid img {
+    height: 60px; 
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.5); 
+    transition: all 0.3s ease;
+}
+
+/* Effetto quando ci passi sopra con il mouse */
+.partners-grid a:hover img {
+    transform: scale(1.4);
+    border-color: #ff003c;
+}
+
+/* Adattamento per i telefoni */
+@media (max-width: 768px) {
+    .partners-section {
+        padding: 40px 20px;
+    }
+    .partners-grid {
+        gap: 30px;
+    }
+    .partners-grid img {
+        height: 45px;
+    }
+}
+
+/* =========================================
+   X CHI SIAMO
+   ========================================= */
+.about-section {
+    padding: 100px 60px;
+    background-color: #050505;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    color: #ddd
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: #111;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    min-width: 280px;
+    transition: all 0.3s ease; 
+}
+
+.team-member:hover {
+    transform: scale(1.06);
+    border-color: #ff003c;
+}
+
+.team-member h3 {
+    color: #ff003c;
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-member .stage-name {
+    color: #ffffff;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.team-member p {
+    margin: 0;
+    font-size: 16px;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+
+/* Modifica per mobile */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 60px 20px;
+    }
+}
+
+/* --- STILE LINK CONTATTI --- */
+.contact-link {
+    color: #ffffff; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+.contact-link:hover {
+    color: #ff003c; 
+}
+
