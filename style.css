@@ -199,7 +199,6 @@ body {
     font-size: 22px;
     line-height: 1.7;
     letter-spacing: 1.5px;
-    text-transform: uppercase;
     text-align: center;
 }
 
@@ -805,6 +804,12 @@ body {
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
+}
+
+.team-member a {
+    text-decoration: none; 
+    color: inherit;      
+    display: block;       
 }
 
 .team-member {
