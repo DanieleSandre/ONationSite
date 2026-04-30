@@ -208,35 +208,12 @@ body {
     font-weight: bold;
 }
 
-.side-decor {
-    width: 250px;
-    height: auto;
-    flex-shrink: 0;
-    opacity: 0.6;
-    filter: grayscale(0.5) contrast(1.1);
-    z-index: 1;
-    mix-blend-mode: screen;
-    transition: all 0.5s ease;
-}
-
-.manifesto:hover .side-decor {
-    opacity: 0.8;
-    filter: grayscale(0) contrast(1.3);
-}
-
-.side-decor video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
 /* =========================================
    5. EVENTI
    ========================================= */
 .event-section {
     background-color: #0a0a0a;
-    padding: 80px 60px;
+    padding: 40px 30px;
 }
 
 .event-section h2 {
@@ -257,15 +234,15 @@ body {
 .event-card {
     position: relative;
     background: #111;
-    padding: 30px;
-    border-radius: 15px;
+    padding: 60px;
+    border-radius: 20px;
     border: 2px solid #ff003c;
     transition: 0.3s;
-    display: flex;
-    gap: 40px;
+    display: flex;         /* Allinea video e testo */
+    flex-wrap: nowrap;     /* Impedisce al video di scivolare sopra/sotto il testo su desktop */
+    align-items: center;   /* Centra verticalmente il testo rispetto al video */
+    gap: 30px;
     margin-bottom: 60px;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 .event-card:hover {
@@ -273,12 +250,16 @@ body {
     border-color: #ff003c;
 }
 
-.event-card img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
+.event-video {
+    width: 300px;          /* Stessa larghezza che avevi per l'immagine */
+    height: 350px;         /* Stessa altezza */
+    object-fit: cover;     /* Impedisce al video di deformarsi */
     border-radius: 10px;
     border: 2px solid #ff003c;
+    flex-shrink: 0;        /* IMPEDISCE AL VIDEO DI INGRANDIRSI O RESTRINGERSI */
+}
+.event-details {
+    flex: 1;               /* Il testo occupa tutto lo spazio che resta a destra */
 }
 
 .event-label {
@@ -314,6 +295,17 @@ body {
 
 .event-section a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        flex-direction: column; 
+        text-align: left;
+    }
+    .event-video {
+        width: 100%;      
+        height: auto;
+    }
 }
 
 /* =========================================
