@@ -83,18 +83,26 @@ function initCarousel() {
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
     // Touch per mobile
-    let startX = 0;
-    let endX = 0;
+   let startX = 0;
+let dist = 0;
 
-    carouselWrapper.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
+carouselWrapper.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
 
-    carouselWrapper.addEventListener('touchend', (e) => {
-        endX = e.changedTouches[0].clientX;
-        if (startX - endX > 50) nextSlide();
-        if (endX - startX > 50) prevSlide();
-    });
+carouselWrapper.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    dist = startX - endX;
+
+    // Se lo scorrimento è superiore a 50px, cambia slide
+    if (Math.abs(dist) > 50) {
+        if (dist > 0) {
+            nextSlide(); // Scorri a destra
+        } else {
+            prevSlide(); // Scorri a sinistra
+        }
+    }
+});
 }
 
 // === 3. MENU HAMBURGER ===
