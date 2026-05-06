@@ -82,12 +82,6 @@ function initCarousel() {
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-    // Auto-play
-    let autoPlay = setInterval(nextSlide, 4000);
-
-    carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoPlay));
-    carouselWrapper.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 5000));
-
     // Touch per mobile
     let startX = 0;
     let endX = 0;
